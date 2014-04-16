@@ -1,0 +1,18 @@
+<h1> Todo List </h1>
+
+  <h3> To do </h3>
+    <% @todos.each do |t| %>
+      <div>
+        <strong><%= t.name %></strong>
+        <small><%= link_to "Mark as Done", todo_path(t), method: :delete %></small>
+      </div>
+    <% end %>
+
+      <div>
+        <h1>Add new item to list</h1>
+          <%= form_for @todo, url: todo_index_path(@todo) do |f| %>
+          <%= f.label :name %>: <%= f.text_field :name, autofocus: true %>
+          <%= f.hidden_field :done, value: false %>
+          <%= f.submit "Add to list" %>
+          <% end %>
+      </div>

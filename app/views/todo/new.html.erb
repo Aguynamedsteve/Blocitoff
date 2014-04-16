@@ -1,0 +1,6 @@
+<h1>Add new item to list</h1>
+  <%= form_for @todo, url: todo_path(@todo) do |f| %>
+    <%= f.label :name %>: <%= f.text_field :name, autofocus: true %>
+    <%= f.hidden_field :done, value: false %>
+    <%= f.submit "Add to list" %>
+  <% end %>
