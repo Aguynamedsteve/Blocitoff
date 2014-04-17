@@ -2,8 +2,7 @@ class TodoController < ApplicationController
 
   def index
     @todo = Todo.new
-    @todos = Todo.where(done: false)
-    @todone = Todo.where(done: true)
+    @todos = current_user.todos.where(done: false)
   end
 
   def new
@@ -15,7 +14,7 @@ class TodoController < ApplicationController
   end
 
   def create
-    @todo = Todo.new(todo_params)
+    @todo = current_user.todos.build(todo_params)
 
     if @todo.save
       redirect_to todo_index_path, :notice => "Item was saved."

@@ -1,2 +1,4 @@
-def show
+class UsersController < ApplicationController
+  def update
+  end
 end
