@@ -3,15 +3,15 @@
   <h3> To do </h3>
     <% @todos.each do |t| %>
         <div>
-        <p><strong><%= t.name %></strong><small> | <%= link_to "Done", todo_path(t), method: :delete %></small></p>
+          <p><strong><%= t.name %></strong> | <small> 
+            <%= days_left(t.created_at) %> days left | <%= link_to "Done", todo_path(t), method: :delete %></small>
         </div>
     <% end %>
 
 
       <br/>
-
       <div>
-        <h5>Add item to list</h5>
+        <h3>Add item to list</h3>
           <%= form_for @todo, url: todo_index_path(@todo) do |f| %>
           <%= f.label :name %>: <%= f.text_field :name, autofocus: true %>
           <%= f.hidden_field :done, value: false %>
@@ -24,4 +24,4 @@
 
 
         
-       
+        
