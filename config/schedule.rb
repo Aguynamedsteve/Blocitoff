@@ -20,9 +20,6 @@
 # Learn more: http://github.com/javan/whenever
 
 
-
 every :hour do
-  rake delete_items: :environment do
-  Todo.where("created_at <= 0", Todo.created_at - 7.days).destroy_all
-  end
+  rake "delete_items"
 end
