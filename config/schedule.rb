@@ -18,8 +18,8 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
+set :environment, "development"
 
-
-every :hour do
+every :day, :at => "2:00am" do
   rake "delete_items"
 end

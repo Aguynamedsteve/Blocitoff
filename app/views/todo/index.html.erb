@@ -1,27 +1,29 @@
 <h1> Todo List </h1>
 
-  <h3> To do </h3>
+<table class="table table-bordered table-hover">        
+  <thead>
+    <tr>  
+      <th>Description</th>  
+      <th>Time Left</th>  
+      <th>Completed?</th>  
+    </tr>
+  </thead>  
+  <tbody>
     <% @todos.each do |t| %>
-        <div>
-          <p><strong><%= t.name %></strong> | <small> 
-            <%= days_left(t.created_at) %> days left | <%= link_to "Done", todo_path(t), method: :delete %></small>
-        </div>
+      <tr>
+        <td><%= t.name %></td> 
+        <td> <%= days_left(t.created_at) %> days left</td> 
+        <td><%= link_to "Done", todo_path(t), method: :delete, data: { confirm: "Are you sure?" } %></td>
+      </tr>
     <% end %>
+  </tbody>
+  </table>  
 
-
-      <br/>
-      <div>
-        <h3>Add item to list</h3>
-          <%= form_for @todo, url: todo_index_path(@todo) do |f| %>
-          <%= f.label :name %>: <%= f.text_field :name, autofocus: true %>
-          <%= f.hidden_field :done, value: false %>
-          <%= f.submit "Add to list" %>
-          <% end %>
-      </div>
-
-
-      
-
-
-        
-        
+    <div>
+      <h3>Add item to list</h3>
+        <%= form_for @todo, url: todo_index_path(@todo) do |f| %>
+        <%= f.label :name %>: <%= f.text_field :name, autofocus: true %>
+        <%= f.hidden_field :done, value: false %>
+        <%= f.submit "Add to list" %>
+        <% end %>
+    </div>

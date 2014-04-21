@@ -2,7 +2,8 @@
 require File.expand_path('../application', __FILE__)
 
 # Initialize the Rails application.
-Blocitoff::Application.initialize!
+Blocitoff::Application.initialize! do
 
+config.gem 'javan-whenever', :lib => false, :source => 'http://gems.github.com'
 
-# config.gem 'javan-whenever', :lib => false, :source => 'http://gems.github.com'
+end
