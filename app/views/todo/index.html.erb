@@ -9,11 +9,11 @@
     </tr>
   </thead>  
   <tbody>
-    <% @todos.each do |t| %>
+    <% @todos.each do |todo| %> 
       <tr>
-        <td><%= t.name %></td> 
-        <td> <%= days_left(t.created_at) %> days left</td> 
-        <td><%= link_to "Done", todo_path(t), method: :delete, data: { confirm: "Are you sure?" } %></td>
+        <td><%= todo.name %></td> 
+        <td><%= todo.days_left %></td> 
+        <td><%= link_to "Done", todo_path(todo), method: :delete, data: { confirm: "Are you sure?" } %></td>
       </tr>
     <% end %>
   </tbody>

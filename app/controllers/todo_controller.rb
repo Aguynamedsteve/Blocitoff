@@ -17,7 +17,8 @@ class TodoController < ApplicationController
     @todo = current_user.todos.build(todo_params)
 
     if @todo.save
-      redirect_to todo_index_path, :notice => "Item was saved."
+      flash[:notice] = "Item was saved."
+      redirect_to todo_index_path, flash[:notice] => "Item was saved."
     else
       render "new"
     end
@@ -27,6 +28,7 @@ class TodoController < ApplicationController
     @todo = Todo.find(params[:id])
     
     if @todo.update_attribute(:done, true)
+      flash[:notice] = "Item."
       redirect_to todo_index_path, :notice => "Item marked as done."
     else
       redirect_to todo_index_path, :error => "Unable to mark item as done."
